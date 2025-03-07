@@ -19,7 +19,6 @@ document.addEventListener('click', (e) => {
 const menuItems = document.querySelectorAll('.mobile-menu a');
 menuItems.forEach(item => {
     item.addEventListener('click', (e) => {
-        e.preventDefault(); // Remove this if you want to keep the href functionality
         mobileMenu.classList.remove('active');
         hamburger.classList.remove('active');
         // Add your page navigation logic here
