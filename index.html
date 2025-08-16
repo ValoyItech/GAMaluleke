@@ -1,295 +1,1136 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>G.A Maluleke Attorneys</title>
-    <link href="https://unpkg.com/aos@next/dist/aos.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <!-- Basic Meta -->
+<title>GA Maluleke Attorneys - Legal Services in Giyani</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="GA Maluleke Attorneys – Professional legal services in Giyani, South Africa. We specialize in personal injury, estate administration, family law, RAF claims, and more.">
+
+<!-- Favicon / Address Bar Icon -->
+<link rel="icon" href="images/logo.png" type="image/png">
+
+<!-- Open Graph / Facebook / WhatsApp -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.gamalulekeattorneys.co.za/">
+<meta property="og:title" content="GA Maluleke Attorneys - Legal Services in Giyani">
+<meta property="og:description" content="Professional legal services including personal injury, estate administration, family law, criminal defense, and more.">
+<meta property="og:image" content="https://www.gamalulekeattorneys.co.za/images/logo.png">
+
+<!-- Twitter / X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://www.gamalulekeattorneys.co.za/">
+<meta name="twitter:title" content="GA Maluleke Attorneys - Legal Services in Giyani">
+<meta name="twitter:description" content="Trusted legal representation in Giyani – RAF claims, family law, criminal defense, land claims, and more.">
+<meta name="twitter:image" content="https://www.gamalulekeattorneys.co.za/images/logo.png">
+
+<!-- Theme Color (Mobile Browsers) -->
+<meta name="theme-color" content="#1e3a8a">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        
+        .hero-gradient { 
+            position: relative;
+            overflow: hidden;
+            min-height: 100vh;
+        }
+        
+        /* Full HD Desktop optimization */
+        @media (min-width: 1920px) {
+            .hero-gradient {
+                min-height: 1080px;
+            }
+        }
+        
+        /* Mobile portrait optimization */
+        @media (max-width: 768px) {
+            .hero-gradient {
+                min-height: 100vh;
+            }
+        }
+        
+        .hero-slider {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow: hidden;
+        }
+        
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0;
+            transform: translateX(100%);
+            transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* Mobile responsive images */
+        @media (max-width: 768px) {
+            .hero-slide:nth-child(1) { background-image: url('images/hero1m.jpg') !important; }
+            .hero-slide:nth-child(2) { background-image: url('images/hero2m.jpg') !important; }
+            .hero-slide:nth-child(3) { background-image: url('images/hero3m.jpg') !important; }
+            .hero-slide:nth-child(4) { background-image: url('images/hero4m.jpg') !important; }
+            .hero-slide:nth-child(5) { background-image: url('images/hero5m.jpg') !important; }
+            .hero-slide:nth-child(6) { background-image: url('images/hero6m.jpg') !important; }
+            .hero-slide:nth-child(7) { background-image: url('images/hero7m.jpg') !important; }
+            .hero-slide:nth-child(8) { background-image: url('images/hero8m.jpg') !important; }
+        }
+        
+        .hero-slide.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .hero-slide.prev {
+            transform: translateX(-100%);
+        }
+        
+        .hero-slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.8) 0%, rgba(59, 130, 246, 0.6) 100%);
+            z-index: 1;
+        }
+        
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.15;
+            overflow: hidden;
+            z-index: 2;
+        }
+        
+        .legal-icon {
+            position: absolute;
+            color: white;
+            opacity: 0.9;
+            animation: floatIcon 12s ease-in-out infinite;
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+        }
+        
+        .legal-icon:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+        .legal-icon:nth-child(2) { top: 20%; right: 15%; animation-delay: -1.5s; }
+        .legal-icon:nth-child(3) { top: 40%; left: 5%; animation-delay: -3s; }
+        .legal-icon:nth-child(4) { top: 60%; right: 10%; animation-delay: -4.5s; }
+        .legal-icon:nth-child(5) { top: 80%; left: 20%; animation-delay: -6s; }
+        .legal-icon:nth-child(6) { top: 30%; left: 50%; animation-delay: -7.5s; }
+        .legal-icon:nth-child(7) { top: 70%; right: 30%; animation-delay: -9s; }
+        .legal-icon:nth-child(8) { top: 15%; left: 70%; animation-delay: -10.5s; }
+        
+        @keyframes floatIcon {
+            0% { transform: translateY(0px) rotate(0deg); opacity: 0.6; }
+            25% { transform: translateY(-25px) rotate(90deg); opacity: 0.9; }
+            50% { transform: translateY(-15px) rotate(180deg); opacity: 0.7; }
+            75% { transform: translateY(-35px) rotate(270deg); opacity: 0.8; }
+            100% { transform: translateY(0px) rotate(360deg); opacity: 0.6; }
+        }
+        
+        .service-card { 
+            transition: all 0.4s ease; 
+            opacity: 0;
+            transform: perspective(1000px) rotateX(90deg) translateY(30px);
+            transform-origin: bottom;
+        }
+        
+        .service-card.animate { 
+            opacity: 1;
+            transform: perspective(1000px) rotateX(0deg) translateY(0);
+        }
+        
+        .service-card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); 
+        }
+        
+        .scroll-smooth { scroll-behavior: smooth; }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .fade-in.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.6s ease;
+        }
+        
+        .slide-in-left.animate {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.6s ease;
+        }
+        
+        .slide-in-right.animate {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .text-slider {
+            height: 80px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .text-slide {
+            position: absolute;
+            width: 100%;
+            opacity: 0;
+            transform: translateY(100%);
+            transition: all 0.8s ease;
+        }
+        
+        .text-slide.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .logo-animation {
+            animation: logoFloat 3s ease-in-out infinite;
+        }
+        
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+        }
+        
+        .scales-icon {
+            animation: scalesBalance 4s ease-in-out infinite;
+        }
+        
+        @keyframes scalesBalance {
+            0%, 100% { transform: rotate(-2deg); }
+            50% { transform: rotate(2deg); }
+        }
+
+        body {
+  overflow-x: hidden;
+}
+
+    </style>
 </head>
-<body>
+<body class="bg-gray-50 scroll-smooth">
     <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="logo-container">
-            <img src="images/logo.jpg" alt="G.A Maluleke Attorneys Logo" class="logo">
-            <div class="logo-text">
-                <h1>G.A Maluleke Attorneys</h1>
-                <p>Vayimeri / Prokureurs</p>
+    <nav class="bg-white shadow-lg fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+<div class="flex-shrink-0 flex items-center">
+    <div class="logo-animation mr-3">
+        <img src="images/logo.png" alt="GA Maluleke Attorneys Logo" class="w-10 h-10 object-contain">
+    </div>
+    <div>
+        <h1 class="text-xl font-bold text-blue-900">GA Maluleke Attorneys</h1>
+        <p class="text-xs text-blue-700 font-medium">Vayimeri</p>
+    </div>
+</div>
+                    
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#home" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Home</a>
+                        <a href="#services" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Services</a>
+                        <a href="#about" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">About</a>
+                        <a href="#contact" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Contact</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-700 hover:text-blue-600 focus:outline-none p-2">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Sidebar Overlay -->
+        <div id="mobile-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden md:hidden transition-opacity duration-300"></div>
+        
+        <!-- Mobile Sidebar -->
+        <div id="mobile-sidebar" class="fixed top-0 left-0 h-full w-4/5 max-w-xs bg-white shadow-2xl z-50 transform -translate-x-full transition-transform duration-300 ease-in-out md:hidden">
+            <div class="flex items-center justify-between p-6 border-b border-gray-200">
+                <div class="flex items-center">
+                    <div class="logo-animation mr-3">
+                        <svg class="w-8 h-8 text-blue-900 scales-icon" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2L13.09 8.26L22 9L13.09 9.74L12 16L10.91 9.74L2 9L10.91 8.26L12 2M12 6.5L11.5 8.5L9.5 9L11.5 9.5L12 11.5L12.5 9.5L14.5 9L12.5 8.5L12 6.5M7 19H17V21H7V19M8 17H16C16.55 17 17 16.55 17 16V15H7V16C7 16.55 7.45 17 8 17Z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h2 class="text-lg font-bold text-blue-900">GA Maluleke</h2>
+                        <p class="text-xs text-blue-700 font-medium">Vayimeri</p>
+                    </div>
+                </div>
+                <button id="close-sidebar" class="text-gray-500 hover:text-gray-700 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <nav class="p-6">
+                <ul class="space-y-4">
+                    <li>
+                        <a href="#home" class="flex items-center px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors duration-200 sidebar-link">
+                            <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                            </svg>
+                            Home
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#services" class="flex items-center px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors duration-200 sidebar-link">
+                            <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                            </svg>
+                            Services
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#about" class="flex items-center px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors duration-200 sidebar-link">
+                            <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            About
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#contact" class="flex items-center px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors duration-200 sidebar-link">
+                            <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                            Contact
+                        </a>
+                    </li>
+                </ul>
+                
+                <div class="mt-8 pt-8 border-t border-gray-200">
+                    <div class="text-sm text-gray-600 mb-4">
+                        <p class="font-semibold text-gray-900 mb-2">Contact Info</p>
+                        <p>📍 Stand No 171, Section D1, Giyani</p>
+                        <p>📞 015 812 0661</p>
+                        <p>📱 083 349 0066</p>
+                        <p>✉️ gamaluleke@gmail.com</p>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-gradient text-white pt-16 relative flex items-center">
+        <!-- Image Slider Background -->
+        <div class="hero-slider">
+            <div class="hero-slide active" style="background-image: url('images/hero1.jpg')"></div>
+            <div class="hero-slide" style="background-image: url('images/hero2.jpg')"></div>
+            <div class="hero-slide" style="background-image: url('images/hero3.jpg')"></div>
+            <div class="hero-slide" style="background-image: url('images/hero4.jpg')"></div>
+            <div class="hero-slide" style="background-image: url('images/hero5.jpg')"></div>
+            <div class="hero-slide" style="background-image: url('images/hero6.jpg')"></div>
+            <div class="hero-slide" style="background-image: url('images/hero7.jpg')"></div>
+            <div class="hero-slide" style="background-image: url('images/hero8.jpg')"></div>
+        </div>
+        
+        <div class="hero-background">
+            <!-- Floating Legal Icons -->
+            <div class="legal-icon">
+                <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2L13.09 8.26L22 9L13.09 9.74L12 16L10.91 9.74L2 9L10.91 8.26L12 2M12 6.5L11.5 8.5L9.5 9L11.5 9.5L12 11.5L12.5 9.5L14.5 9L12.5 8.5L12 6.5M7 19H17V21H7V19M8 17H16C16.55 17 17 16.55 17 16V15H7V16C7 16.55 7.45 17 8 17Z"/>
+                </svg>
+            </div>
+            <div class="legal-icon">
+                <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                </svg>
+            </div>
+            <div class="legal-icon">
+                <svg class="w-11 h-11" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                </svg>
+            </div>
+            <div class="legal-icon">
+                <svg class="w-9 h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                </svg>
+            </div>
+            <div class="legal-icon">
+                <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                </svg>
+            </div>
+            <div class="legal-icon">
+                <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0H8m8 0v2a2 2 0 01-2 2H10a2 2 0 01-2-2V6m8 0H8"></path>
+                </svg>
+            </div>
+            <div class="legal-icon">
+                <svg class="w-11 h-11" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                </svg>
+            </div>
+            <div class="legal-icon">
+                <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
             </div>
         </div>
         
-        <!-- Desktop Navigation Menu -->
-        <div class="nav-menu">
-            <ul class="menu-items">
-                <li><a href="#hero">Home</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
-
-        <div class="hamburger" id="hamburger"></div>
-    </nav>
-
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
-        <ul class="menu-items">
-            <li><a href="#hero">Home</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </div>
-
-    <!-- Hero Section -->
-    <section class="hero" id="hero">
-        <div class="slider-container">
-            <div class="slide active">
-                <img src="images/law1.jpg" alt="Legal Consultation" data-aos="zoom-in">
-                <div class="overlay"></div>
-                <div class="slide-content" data-aos="fade-up">
-                    <h2>Comprehensive Legal Solutions</h2>
-                    <p>Expert representation for your legal challenges</p>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10 w-full">
+            <div class="text-center">
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 fade-in drop-shadow-lg">GA Maluleke Attorneys</h1>
+                <div class="text-slider mb-8">
+                    <p class="text-xl md:text-2xl lg:text-3xl text-white text-slide active drop-shadow-md">Professional Legal Services in Giyani, South Africa</p>
+                    <p class="text-xl md:text-2xl lg:text-3xl text-white text-slide drop-shadow-md">Your Rights, Our Priority - Expert Legal Representation</p>
+                    <p class="text-xl md:text-2xl lg:text-3xl text-white text-slide drop-shadow-md">Justice Through Knowledge, Integrity, and Dedication</p>
+                    <p class="text-xl md:text-2xl lg:text-3xl text-white text-slide drop-shadow-md">Protecting Your Interests with Professional Excellence</p>
+                    <p class="text-xl md:text-2xl lg:text-3xl text-white text-slide drop-shadow-md">Trusted Legal Counsel for Every Legal Challenge</p>
                 </div>
-            </div>
-            <div class="slide">
-                <img src="images/law2.jpg" alt="Courtroom" data-aos="zoom-in">
-                <div class="overlay"></div>
-                <div class="slide-content" data-aos="fade-up">
-                    <h2>Dedicated Advocacy</h2>
-                    <p>Strong legal defense tailored to your needs</p>
-                </div>
-            </div>
-            <div class="slide">
-                <img src="images/law3.jpg" alt="Legal Team" data-aos="zoom-in">
-                <div class="overlay"></div>
-                <div class="slide-content" data-aos="fade-up">
-                    <h2>Your Rights, Our Mission</h2>
-                    <p>Navigating justice with professionalism and care</p>
+                <p class="text-lg md:text-xl lg:text-2xl mb-10 max-w-4xl mx-auto text-white fade-in drop-shadow-md">Providing expert legal representation and guidance across multiple practice areas including personal injury, estate administration, family law, and more.</p>
+                <div class="space-y-4 sm:space-y-0 sm:space-x-4 sm:flex sm:justify-center fade-in">
+                    <a href="#services" class="inline-block bg-white text-blue-900 px-8 py-4 rounded-lg font-semibold hover:bg-blue-50 transition-all transform hover:scale-105 text-lg shadow-lg">Our Services</a>
+                    <a href="#contact" class="inline-block border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-blue-900 transition-all transform hover:scale-105 text-lg shadow-lg">Contact Us</a>
                 </div>
             </div>
         </div>
     </section>
 
+<!-- Services Section -->
+<section id="services" class="py-20 bg-gradient-to-br from-slate-50 to-blue-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 fade-in">Our Legal Services</h2>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto fade-in">
+                We provide comprehensive legal services to individuals and businesses across various areas of law.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <!-- Service 1 -->
+            <div class="service-card bg-gray-50 p-6 rounded-lg border">
+                <div class="mb-4 flex justify-center">
+                    <img src="images/service1.jpg" alt="Road Accident Fund Claims" class="w-[400px] h-[200px] object-contain">
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-3">Road Accident Fund Claims</h3>
+                <p class="text-gray-600">We assist clients in securing rightful compensation for injuries, damages, and losses resulting from road accidents. Our team handles all aspects of RAF claims, from initial documentation to court representation if necessary.</p>
+            </div>
+
+            <!-- Service 2 -->
+            <div class="service-card bg-gray-50 p-6 rounded-lg border">
+                <div class="mb-4 flex justify-center">
+                    <img src="images/service2.jpg" alt="Administration of Estates" class="w-[400px] h-[200px] object-contain">
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-3">Administration of Estates</h3>
+                <p class="text-gray-600">Our probate attorneys guide families through the complex process of estate administration, including asset verification, debt settlement, and legal transfer of inheritance.</p>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="service-card bg-gray-50 p-6 rounded-lg border">
+                <div class="mb-4 flex justify-center">
+                    <img src="images/service3.jpg" alt="Personal Injury & Medical Negligence" class="w-[400px] h-[200px] object-contain">
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-3">Personal Injury & Medical Negligence</h3>
+                <p class="text-gray-600">We advocate for victims of personal injury and medical negligence, helping them receive compensation for medical expenses, lost income, and emotional trauma.</p>
+            </div>
+
+            <!-- Service 4 -->
+            <div class="service-card bg-gray-50 p-6 rounded-lg border">
+                <div class="mb-4 flex justify-center">
+                    <img src="images/service4.jpg" alt="Unlawful Eviction Claims" class="w-[400px] h-[200px] object-contain">
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-3">Unlawful Eviction Claims</h3>
+                <p class="text-gray-600">Our housing law specialists defend tenants' rights against unlawful evictions, ensuring proper legal processes are followed and providing representation in housing tribunals.</p>
+            </div>
+
+            <!-- Service 5 -->
+            <div class="service-card bg-gray-50 p-6 rounded-lg border">
+                <div class="mb-4 flex justify-center">
+                    <img src="images/service5.jpg" alt="Divorce Matters" class="w-[400px] h-[200px] object-contain">
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-3">Divorce Matters</h3>
+                <p class="text-gray-600">Our family law attorneys handle divorce proceedings with sensitivity and expertise, ensuring fair settlements for assets, child custody, and spousal support.</p>
+            </div>
+
+            <!-- Service 6 -->
+            <div class="service-card bg-gray-50 p-6 rounded-lg border">
+                <div class="mb-4 flex justify-center">
+                    <img src="images/service6.jpg" alt="Drafting of Wills & Legal Agreements" class="w-[400px] h-[200px] object-contain">
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-3">Drafting of Wills & Legal Agreements</h3>
+                <p class="text-gray-600">Our estate planning team creates comprehensive wills, trusts, and legal agreements tailored to your specific needs, ensuring your wishes are protected.</p>
+            </div>
+
+            <!-- Service 7 -->
+            <div class="service-card bg-gray-50 p-6 rounded-lg border">
+                <div class="mb-4 flex justify-center">
+                    <img src="images/service7.jpg" alt="Criminal Matters" class="w-[400px] h-[200px] object-contain">
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-3">Criminal Matters</h3>
+                <p class="text-gray-600">Our criminal defense attorneys provide vigorous representation for various criminal charges, ensuring your rights are protected throughout the legal process.</p>
+            </div>
+
+            <!-- Service 8 -->
+            <div class="service-card bg-gray-50 p-6 rounded-lg border">
+                <div class="mb-4 flex justify-center">
+                    <img src="images/service8.jpg" alt="Land Claims" class="w-[400px] h-[200px] object-contain">
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-3">Land Claims</h3>
+                <p class="text-gray-600">We assist clients in navigating land claims processes, providing expert legal guidance for property disputes and historical land restitution matters.</p>
+            </div>
+
+            <!-- Service 9 -->
+            <div class="service-card bg-gray-50 p-6 rounded-lg border">
+                <div class="mb-4 flex justify-center">
+                    <img src="images/service9.jpg" alt="Labour Matters" class="w-[400px] h-[200px] object-contain">
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-3">Labour Matters</h3>
+                <p class="text-gray-600">Our labour law department advises both employers and employees on workplace disputes, unfair dismissals, and compliance with employment legislation.</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
 
     <!-- About Us Section -->
-<section class="about" id="about" data-aos="fade-up">
-    <div class="about-container">
-        <div class="image-slider">
-            <div class="slider">
-                <div class="slide">
-                    <img src="images/outside1.jpg" alt="Office Exterior" loading="lazy">
+    <section id="about" class="py-20 bg-gradient-to-r from-blue-900 via-blue-800 to-slate-800 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 fade-in">About GA Maluleke Attorneys</h2>
+                <p class="text-lg text-blue-100 max-w-3xl mx-auto fade-in">Established with a commitment to justice and excellence, GA Maluleke Attorneys has been serving the Giyani community and surrounding areas with professional legal services for years.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
+                <div class="slide-in-left">
+                    <h3 class="text-2xl font-bold text-white mb-6">Our Story</h3>
+                    <p class="text-blue-100 mb-4">Founded on the principles of integrity, dedication, and client-focused service, GA Maluleke Attorneys has grown to become a trusted name in legal representation throughout the Limpopo province. Our firm was established with the vision of making quality legal services accessible to all members of our community.</p>
+                    <p class="text-blue-100 mb-4">We understand that legal matters can be overwhelming and stressful. That's why we've built our practice around providing clear, honest communication and personalized attention to each client's unique situation.</p>
+                    <p class="text-blue-100">Our commitment extends beyond just legal representation – we strive to educate our clients about their rights and options, empowering them to make informed decisions about their legal matters.</p>
                 </div>
-                <div class="slide">
-                    <img src="images/outside.jpg" alt="Legal Team" loading="lazy">
+                
+                <div class="slide-in-right">
+                    <h3 class="text-2xl font-bold text-white mb-6">Our Mission & Values</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="bg-white w-8 h-8 rounded-full flex items-center justify-center mr-4 mt-1">
+                                <svg class="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-white">Integrity</h4>
+                                <p class="text-blue-100">We maintain the highest ethical standards in all our professional dealings.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-white w-8 h-8 rounded-full flex items-center justify-center mr-4 mt-1">
+                                <svg class="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-white">Excellence</h4>
+                                <p class="text-blue-100">We strive for excellence in every case, no matter how big or small.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-white w-8 h-8 rounded-full flex items-center justify-center mr-4 mt-1">
+                                <svg class="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-white">Accessibility</h4>
+                                <p class="text-blue-100">Quality legal services should be accessible to everyone in our community.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-white w-8 h-8 rounded-full flex items-center justify-center mr-4 mt-1">
+                                <svg class="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-white">Community Focus</h4>
+                                <p class="text-blue-100">We are deeply committed to serving and supporting our local community.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="slide">
-                    <img src="images/outside2.jpg" alt="Consultation Room" loading="lazy">
+            </div>
+            
+            <!-- Why Choose Us -->
+            <div class="text-center mb-16">
+                <h3 class="text-2xl md:text-3xl font-bold text-white mb-4 fade-in">Why Choose GA Maluleke Attorneys?</h3>
+                <p class="text-lg text-blue-100 max-w-2xl mx-auto fade-in">We are committed to providing exceptional legal services with integrity, professionalism, and dedication to our clients' success.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center slide-in-left">
+                    <div class="bg-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-3">Expert Legal Knowledge</h3>
+                    <p class="text-blue-100">Our experienced attorneys bring deep expertise across multiple areas of law to serve your needs effectively.</p>
                 </div>
-                <div class="slide">
-                    <img src="images/outside3.jpg" alt="Courthouse" loading="lazy">
+                
+                <div class="text-center fade-in">
+                    <div class="bg-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-3">Timely Service</h3>
+                    <p class="text-blue-100">We understand the importance of time in legal matters and work efficiently to achieve the best outcomes for our clients.</p>
+                </div>
+                
+                <div class="text-center slide-in-right">
+                    <div class="bg-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-3">Client-Centered Approach</h3>
+                    <p class="text-blue-100">Your success is our priority. We provide personalized attention and keep you informed throughout the legal process.</p>
                 </div>
             </div>
         </div>
-        <div class="about-content" data-aos="fade-left">
-            <h2>About Us</h2>
-            <p>Founded in [YEAR], G.A. Maluleke Attorneys has built a strong reputation as a trusted legal partner dedicated to protecting the rights and interests of our clients. With a deep commitment to justice and excellence, our firm has successfully guided individuals, families, and businesses through complex legal challenges, ensuring fair outcomes and peace of mind.</p>
-            <p>From securing rightful compensation in Road Accident Fund claims to advocating for victims of personal injury and medical negligence, we have helped countless clients reclaim their lives after hardship. We have stood by families navigating estate administration, ensuring their loved ones' affairs are handled with care and precision.</p>
-            <p>Our firm has been instrumental in defending tenants against unlawful evictions, helping individuals secure their rights in land claims, and fighting for fair treatment in labour disputes. We have provided expert legal counsel in divorce matters, ensuring that clients receive fair settlements while prioritizing their well-being and that of their families.</p>
-            <p>At G.A. Maluleke Attorneys, we believe that everyone deserves strong legal representation, whether facing criminal charges, drafting crucial wills and legal agreements, or seeking justice in any legal matter. Our experienced team approaches each case with dedication, professionalism, and a commitment to achieving the best possible results for our clients.</p>
-            <p>No matter the complexity of your legal issue, we are here to provide the guidance and advocacy you need. Your justice is our priority.</p>
-        </div>
-    </div>
-</section>
+    </section>
 
-<!-- Services Section -->
-<section class="services" id="services" data-aos="fade-up">
-    <div class="services-container">
-        <h2 class="section-title" data-aos="zoom-in">Our Services</h2>
-        <div class="services-grid">
-            <!-- Service Item 1 -->
-            <div class="service-item" data-aos="flip-up">
-                <div class="icon-container">
-                    <i class="fas fa-car-crash"></i>
-                </div>
-                <h3>Road Accident Fund Claims</h3>
-                <p>We assist clients in securing rightful compensation for injuries, damages, and losses resulting from road accidents. Our team handles all aspects of RAF claims, from initial documentation to court representation if necessary.</p>
-            </div>
-            
-            <!-- Service Item 2 -->
-            <div class="service-item" data-aos="flip-up">
-                <div class="icon-container">
-                    <i class="fas fa-landmark"></i>
-                </div>
-                <h3>Administration of Estates</h3>
-                <p>Our probate attorneys guide families through the complex process of estate administration, including asset verification, debt settlement, and legal transfer of inheritance.</p>
-            </div>
-            
-            <!-- Service Item 3 -->
-            <div class="service-item" data-aos="flip-up">
-                <div class="icon-container">
-                    <i class="fas fa-user-injured"></i>
-                </div>
-                <h3>Personal Injury & Medical Negligence Claims</h3>
-                <p>We advocate for victims of personal injury and medical negligence, helping them receive compensation for medical expenses, lost income, and emotional trauma.</p>
-            </div>
-            
-            <!-- Service Item 4 -->
-            <div class="service-item" data-aos="flip-up">
-                <div class="icon-container">
-                    <i class="fas fa-home"></i>
-                </div>
-                <h3>Unlawful Eviction Claims</h3>
-                <p>Our housing law specialists defend tenants' rights against unlawful evictions, ensuring proper legal processes are followed and providing representation in housing tribunals.</p>
-            </div>
-            
-            <!-- Service Item 5 -->
-            <div class="service-item" data-aos="flip-up">
-                <div class="icon-container">
-                    <i class="fas fa-handshake"></i>
-                </div>
-                <h3>Divorce Matters</h3>
-                <p>Our family law attorneys handle divorce proceedings with sensitivity and expertise, ensuring fair settlements for assets, child custody, and spousal support.</p>
-            </div>
-            
-            <!-- Service Item 6 -->
-            <div class="service-item" data-aos="flip-up">
-                <div class="icon-container">
-                    <i class="fas fa-file-contract"></i>
-                </div>
-                <h3>Drafting of Wills & Legal Agreements</h3>
-                <p>Our estate planning team creates comprehensive wills, trusts, and legal agreements tailored to your specific needs, ensuring your wishes are protected.</p>
-            </div>
-            
-            <!-- Service Item 7 -->
-            <div class="service-item" data-aos="flip-up">
-                <div class="="icon-container">
-                    <i class="fas fa-gavel"></i>
-                </div>
-                <h3>Criminal Matters</h3>
-                <p>Our criminal defense attorneys provide vigorous representation for various criminal charges, ensuring your rights are protected throughout the legal process.</p>
-            </div>
-            
-            <!-- Service Item 8 -->
-            <div class="service-item" data-aos="flip-up">
-                <div class="icon-container">
-                    <i class="fas fa-map-marked-alt"></i>
-                </div>
-                <h3>Land Claims</h3>
-                <p>We assist clients in navigating land claims processes, providing expert legal guidance for property disputes and historical land restitution matters.</p>
-            </div>
-            
-            <!-- Service Item 9 -->
-            <div class="service-item" data-aos="flip-up">
-                <div class="icon-container">
-                    <i class="fas fa-hands-helping"></i>
-                </div>
-                <h3>Labour Matters</h3>
-                <p>Our labour law department advises both employers and employees on workplace disputes, unfair dismissals, and compliance with employment legislation.</p>
-            </div>
+<!-- Meet Our Team Section -->
+<section class="py-20 bg-gradient-to-bl from-blue-50 via-indigo-50 to-slate-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 fade-in">Meet Our Legal Team</h2>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto fade-in">Our experienced attorneys are dedicated to providing you with the highest quality legal representation and personalized service.</p>
         </div>
-    </div>
-</section>
-
-<!-- Contact Section -->
-<section class="contact" id="contact" data-aos="fade-up">
-    <div class="contact-container">
-        <h2 class="section-title" data-aos="zoom-in">Contact Us</h2>
         
-        <!-- Address Information and Operating Hours -->
-        <div class="address-info" data-aos="flip-up">
-            <div class="info-box">
-                <i class="fas fa-map-marker-alt"></i>
-                <div class="info-details">
-                    <h3>Office Address</h3>
-                    <p>Stand No 171, Section D1, Giyani, South Africa</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Team Member 1 -->
+            <div class="text-center service-card bg-gray-50 p-8 rounded-lg">
+                <div class="w-32 h-32 bg-gradient-to-br from-blue-500 to-blue-700 rounded-full mx-auto mb-6 flex items-center justify-center">
+                    <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                    </svg>
                 </div>
-            </div>
-            <div class="info-box">
-                <i class="fas fa-phone"></i>
-                <div class="info-details">
-                    <h3>Phone</h3>
-                    <p>015 812 0661</p>
+                <h3 class="text-xl font-bold text-gray-900 mb-2">GA Maluleke</h3>
+                <p class="text-blue-600 font-semibold mb-4">Director & Principal Attorney</p>
+                <p class="text-gray-600 mb-4">With extensive experience in multiple areas of law, GA Maluleke leads our firm with a commitment to excellence and client satisfaction. Specializes in personal injury, estate administration, and civil litigation.</p>
+                <div class="text-sm text-gray-500">
+                    <p>LLB, University of Limpopo</p>
+                    <p>Admitted Attorney of the High Court</p>
                 </div>
-            </div>
-            <div class="info-box">
-                <i class="fas fa-fax"></i>
-                <div class="info-details">
-                    <h3>Fax</h3>
-                    <p>086 572 9560</p>
-                </div>
-            </div>
-            <div class="info-box">
-                <i class="fas fa-mobile-alt"></i>
-                <div class="info-details">
-                    <h3>Mobile</h3>
-                    <p>083 349 0066</p>
-                </div>
-            </div>
-            <div class="info-box">
-                <i class="fas fa-envelope"></i>
-                <div class="info-details">
-                    <h3>Email</h3>
-                    <p>gamaluleke@gmail.com</p>
-                </div>
-            </div>
-            <!-- Operating Hours -->
-            <div class="info-box">
-                <i class="fas fa-clock"></i>
-                <div class="info-details">
-                    <h3>Operating Hours</h3>
-                    <p>Monday to Thursday: 8:00 AM to 4:30 PM<br>
-                       Friday: 8:00 AM to 4:00 PM<br>
-                       Weekends & Holidays: Closed</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Contact Form and Map -->
-        <div class="contact-form-map">
-            <!-- Contact Form -->
-            <div class="contact-form" data-aos="flip-up">
-                <form id="contactForm">
-                    <div class="form-group">
-                        <input type="text" placeholder="Your Name" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" placeholder="Your Email" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" placeholder="Subject" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea placeholder="Your Message" required></textarea>
-                    </div>
-                    <button type="submit">Send Message</button>
-                </form>
             </div>
             
-            <!-- Location Map -->
-            <div class="location-map" data-aos="flip-up">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3239.647135887193!2d30.704925774857323!3d-23.30544365223923!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1ec4451c030bfeed%3A0x591d899f7be626b5!2sG%20A%20MALULEKE%20ATTORNEYS!5e1!3m2!1sen!2sza!4v1741346103523!5m2!1sen!2sza" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <!-- Team Member 2 -->
+            <div class="text-center service-card bg-gray-50 p-8 rounded-lg">
+                <div class="w-32 h-32 bg-gradient-to-br from-green-500 to-green-700 rounded-full mx-auto mb-6 flex items-center justify-center">
+                    <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-2">Mr Matume Letsiee</h3>
+                <p class="text-blue-600 font-semibold mb-4">Office Manager & Attorney</p>
+                <p class="text-gray-600 mb-4">Mr Letsiee oversees the daily operations of our office while also practicing law. His dual role ensures that both our clients and our internal team receive effective support and guidance.</p>
+                <div class="text-sm text-gray-500">
+                    <p>LLB, University of the Witwatersrand</p>
+                    <p>Admitted Attorney of the High Court</p>
+                </div>
+            </div>
+            
+            <!-- Team Member 3 -->
+            <div class="text-center service-card bg-gray-50 p-8 rounded-lg">
+                <div class="w-32 h-32 bg-gradient-to-br from-purple-500 to-purple-700 rounded-full mx-auto mb-6 flex items-center justify-center">
+                    <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-2">Candidate Attorney</h3>
+                <p class="text-blue-600 font-semibold mb-4">Labour & Property Law</p>
+                <p class="text-gray-600 mb-4">Our candidate attorney focuses on labour disputes, employment law, and property matters. Brings fresh perspectives and thorough research skills to every case.</p>
+                <div class="text-sm text-gray-500">
+                    <p>LLB, University of Pretoria</p>
+                    <p>Labour Law Certificate</p>
+                </div>
+            </div>
+                
+                <!-- Support Staff -->
+                <div class="text-center service-card bg-gray-50 p-8 rounded-lg">
+                    <div class="w-32 h-32 bg-gradient-to-br from-orange-500 to-orange-700 rounded-full mx-auto mb-6 flex items-center justify-center">
+                        <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M16 4c0-1.11.89-2 2-2s2 .89 2 2-.89 2-2 2-2-.89-2-2zm4 18v-6h2.5l-2.54-7.63A1.5 1.5 0 0 0 18.5 8H17c-.8 0-1.5.7-1.5 1.5v6c0 .8.7 1.5 1.5 1.5h1v5h2zm-7.5-10.5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5S11 9.17 11 10.5s.67 1.5 1.5 1.5zM5.5 6c1.11 0 2-.89 2-2s-.89-2-2-2-2 .89-2 2 .89 2 2 2zm2 16v-7H9V9c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v6h1.5v7h4z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Legal Support Team</h3>
+                    <p class="text-blue-600 font-semibold mb-4">Paralegals & Administrative Staff</p>
+                    <p class="text-gray-600 mb-4">Our experienced support team ensures efficient case management, client communication, and administrative excellence. They work behind the scenes to keep your legal matters moving forward smoothly.</p>
+                    <div class="text-sm text-gray-500">
+                        <p>Certified Paralegals</p>
+                        <p>Legal Administration Specialists</p>
+                    </div>
+                </div>
+                
+                <!-- Client Relations -->
+                <div class="text-center service-card bg-gray-50 p-8 rounded-lg">
+                    <div class="w-32 h-32 bg-gradient-to-br from-teal-500 to-teal-700 rounded-full mx-auto mb-6 flex items-center justify-center">
+                        <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Client Relations Manager</h3>
+                    <p class="text-blue-600 font-semibold mb-4">Client Care & Communication</p>
+                    <p class="text-gray-600 mb-4">Our client relations manager ensures that every client receives personalized attention and clear communication throughout their legal journey. Your first point of contact for all inquiries.</p>
+                    <div class="text-sm text-gray-500">
+                        <p>Client Services Certification</p>
+                        <p>Multilingual Communication</p>
+                    </div>
+                </div>
+                
+                <!-- Consultation -->
+                <div class="text-center service-card bg-blue-50 p-8 rounded-lg border-2 border-blue-200">
+                    <div class="w-32 h-32 bg-gradient-to-br from-blue-600 to-blue-800 rounded-full mx-auto mb-6 flex items-center justify-center">
+                        <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Schedule a Consultation</h3>
+                    <p class="text-blue-600 font-semibold mb-4">Get Expert Legal Advice</p>
+                    <p class="text-gray-600 mb-6">Ready to discuss your legal matter? Our team is here to provide you with professional guidance and representation tailored to your specific needs.</p>
+                    <a href="#contact" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-all transform hover:scale-105">Contact Us Today</a>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- Footer -->
-<footer class="footer">
-    <div class="footer-content">
-        <div class="footer-brand">
-            <h2>G.A Maluleke Attorneys</h2>
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gradient-to-tr from-slate-900 via-blue-900 to-indigo-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Contact Us</h2>
+                <p class="text-lg text-blue-100 max-w-2xl mx-auto">Ready to discuss your legal needs? Get in touch with our experienced team today.</p>
+            </div>
             
-        </div>
-        <div class="footer-design">
-            <p>Designed by <a href="https://www.valoyitech.co.za/" target="_blank">Hector Baloyi</a></p>
-        </div>
-    </div>
-</footer>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Contact Information -->
+                <div class="space-y-8">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0">
+                            <div class="bg-white w-12 h-12 rounded-lg flex items-center justify-center">
+                                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-semibold text-white">Office Address</h3>
+                            <p class="text-blue-100">Stand No 171, Section D1<br>Giyani, South Africa</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0">
+                            <div class="bg-white w-12 h-12 rounded-lg flex items-center justify-center">
+                                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-semibold text-white">Phone Numbers</h3>
+                            <p class="text-blue-100">Office: 015 812 0661<br>Mobile: 083 349 0066<br>Fax: 086 572 9560</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0">
+                            <div class="bg-white w-12 h-12 rounded-lg flex items-center justify-center">
+                                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-semibold text-white">Email</h3>
+                            <p class="text-blue-100">gamaluleke@gmail.com</p>
+                        </div>
+                    </div>
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script src="scripts.js"></script>
-</body>
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0">
+                            <div class="bg-white w-12 h-12 rounded-lg flex items-center justify-center">
+                                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-semibold text-white">Email</h3>
+                            <p class="text-blue-100">info@gamalulekeattorneys.co.za</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0">
+                            <div class="bg-white w-12 h-12 rounded-lg flex items-center justify-center">
+                                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-semibold text-white">Operating Hours</h3>
+                            <p class="text-blue-100">Monday to Thursday: 8:00 AM to 4:30 PM<br>Friday: 8:00 AM to 4:00 PM<br>Weekends & Holidays: Closed</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <div class="bg-white bg-opacity-10 backdrop-blur-sm p-8 rounded-lg border border-white border-opacity-20">
+                    <h3 class="text-xl font-semibold text-white mb-6">Send us a Message</h3>
+                    <form class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-white mb-2">Full Name</label>
+                            <input type="text" id="name" name="name" class="w-full px-4 py-3 bg-white bg-opacity-20 border border-white border-opacity-30 rounded-lg focus:ring-2 focus:ring-white focus:border-transparent text-white placeholder-blue-200" placeholder="Enter your full name" required>
+                        </div>
+                        
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-white mb-2">Email Address</label>
+                            <input type="email" id="email" name="email" class="w-full px-4 py-3 bg-white bg-opacity-20 border border-white border-opacity-30 rounded-lg focus:ring-2 focus:ring-white focus:border-transparent text-white placeholder-blue-200" placeholder="Enter your email" required>
+                        </div>
+                        
+                        <div>
+                            <label for="phone" class="block text-sm font-medium text-white mb-2">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 bg-white bg-opacity-20 border border-white border-opacity-30 rounded-lg focus:ring-2 focus:ring-white focus:border-transparent text-white placeholder-blue-200" placeholder="Enter your phone number">
+                        </div>
+                        
+                        <div>
+                            <label for="service" class="block text-sm font-medium text-white mb-2">Legal Service Needed</label>
+                            <select id="service" name="service" class="w-full px-4 py-3 bg-white bg-opacity-20 border border-white border-opacity-30 rounded-lg focus:ring-2 focus:ring-white focus:border-transparent text-white">
+                                <option value="">Select a service</option>
+                                <option value="raf">Road Accident Fund Claims</option>
+                                <option value="estates">Administration of Estates</option>
+                                <option value="personal-injury">Personal Injury & Medical Negligence</option>
+                                <option value="eviction">Unlawful Eviction Claims</option>
+                                <option value="divorce">Divorce Matters</option>
+                                <option value="wills">Drafting of Wills & Legal Agreements</option>
+                                <option value="criminal">Criminal Matters</option>
+                                <option value="land">Land Claims</option>
+                                <option value="labour">Labour Matters</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-white mb-2">Message</label>
+                            <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 bg-white bg-opacity-20 border border-white border-opacity-30 rounded-lg focus:ring-2 focus:ring-white focus:border-transparent text-white placeholder-blue-200" placeholder="Please describe your legal matter..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-white text-blue-900 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors transform hover:scale-105">Send Message</button>
+                    </form>
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Google Maps Section -->
+    <section class="py-16 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 fade-in">Find Our Office</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto fade-in">Visit us at our convenient location in Giyani. We're easily accessible and offer ample parking for our clients.</p>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden fade-in">
+                <div class="aspect-w-16 aspect-h-9 lg:aspect-h-6">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3239.647135887205!2d30.7167!3d-23.3025!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1ec4451c030bfeed%3A0x591d899f7be626b5!2sG%20A%20MALULEKE%20ATTORNEYS!5e1!3m2!1sen!2sza!4v1699123456789!5m2!1sen!2sza"
+                        width="100%" 
+                        height="450" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade"
+                        class="w-full h-96 lg:h-[450px]">
+                    </iframe>
+                </div>
+                
+                <div class="p-6 bg-gradient-to-r from-blue-50 to-indigo-50">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="text-center">
+                            <div class="bg-blue-600 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="font-semibold text-gray-900 mb-1">Address</h3>
+                            <p class="text-gray-600 text-sm">Stand No 171, Section D1<br>Giyani, South Africa</p>
+                        </div>
+                        
+                        <div class="text-center">
+                            <div class="bg-blue-600 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="font-semibold text-gray-900 mb-1">Office Hours</h3>
+                            <p class="text-gray-600 text-sm">Mon-Thu: 8:00 AM - 4:30 PM<br>Fri: 8:00 AM - 4:00 PM</p>
+                        </div>
+                        
+                        <div class="text-center">
+                            <div class="bg-blue-600 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="font-semibold text-gray-900 mb-1">Contact</h3>
+                            <p class="text-gray-600 text-sm">015 812 0661<br>083 349 0066</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 text-center">
+                        <p class="text-gray-600 text-sm mb-4">Need directions? Click the map to open in Google Maps for turn-by-turn navigation.</p>
+                        <div class="flex flex-wrap justify-center gap-4">
+                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                Free Parking Available
+                            </span>
+                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                                <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                Wheelchair Accessible
+                            </span>
+                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
+                                <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                Public Transport Nearby
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+    <div class="logo-animation mr-3">
+        <img src="images/white.png" alt="GA Maluleke Attorneys Logo" class="w-10 h-10 scales-icon">
+    </div>
+    <div>
+        <h3 class="text-xl font-bold">GA Maluleke Attorneys</h3>
+        <p class="text-sm text-gray-300 font-medium">Vayimeri</p>
+    </div>
+</div>
+
+                    <p class="text-gray-300 mb-4">Professional legal services in Giyani, South Africa. We are committed to protecting your rights and achieving the best outcomes for our clients.</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-300 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="#services" class="text-gray-300 hover:text-white transition-colors">Services</a></li>
+                        <li><a href="#about" class="text-gray-300 hover:text-white transition-colors">About</a></li>
+                        <li><a href="#contact" class="text-gray-300 hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact Info</h4>
+                    <div class="space-y-2 text-gray-300">
+                        <p>Stand No 171, Section D1, Giyani</p>
+                        <p>Phone: 015 812 0661</p>
+                        <p>Mobile: 083 349 0066</p>
+                        <p>Email: gamaluleke@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+                <p class="text-gray-400">&copy; 2024 GA Maluleke Attorneys. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile sidebar toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileSidebar = document.getElementById('mobile-sidebar');
+        const mobileOverlay = document.getElementById('mobile-overlay');
+        const closeSidebar = document.getElementById('close-sidebar');
+        
+        function openSidebar() {
+            mobileOverlay.classList.remove('hidden');
+            mobileSidebar.classList.remove('-translate-x-full');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeSidebarMenu() {
+            mobileOverlay.classList.add('hidden');
+            mobileSidebar.classList.add('-translate-x-full');
+            document.body.style.overflow = '';
+        }
+        
+        mobileMenuBtn.addEventListener('click', openSidebar);
+        closeSidebar.addEventListener('click', closeSidebarMenu);
+        mobileOverlay.addEventListener('click', closeSidebarMenu);
+        
+        // Close sidebar when clicking on navigation links
+        document.querySelectorAll('.sidebar-link').forEach(link => {
+            link.addEventListener('click', closeSidebarMenu);
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile sidebar if open
+                    closeSidebarMenu();
+                }
+            });
+        });
+        
+        // Form submission handler
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! This is a demo form. In a real website, your message would be sent to GA Maluleke Attorneys.');
+        });
+        
+        // Add scroll effect to navbar
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('shadow-lg');
+            } else {
+                nav.classList.remove('shadow-lg');
+            }
+        });
+        
+        // Text slider for hero section
+        const textSlides = document.querySelectorAll('.text-slide');
+        let currentSlide = 0;
+        
+        function nextSlide() {
+            textSlides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % textSlides.length;
+            textSlides[currentSlide].classList.add('active');
+        }
+        
+        // Change slide every 3 seconds
+        setInterval(nextSlide, 3000);
+        
+        // Hero image slider
+        const heroSlides = document.querySelectorAll('.hero-slide');
+        let currentHeroSlide = 0;
+        
+        function nextHeroSlide() {
+            // Remove active class from current slide
+            heroSlides[currentHeroSlide].classList.remove('active');
+            heroSlides[currentHeroSlide].classList.add('prev');
+            
+            // Move to next slide
+            currentHeroSlide = (currentHeroSlide + 1) % heroSlides.length;
+            
+            // Reset all slides
+            heroSlides.forEach((slide, index) => {
+                slide.classList.remove('active', 'prev');
+                if (index === currentHeroSlide) {
+                    slide.classList.add('active');
+                } else if (index < currentHeroSlide) {
+                    slide.classList.add('prev');
+                }
+            });
+        }
+        
+        // Change hero image every 5 seconds
+        setInterval(nextHeroSlide, 5000);
+        
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.05,
+            rootMargin: '0px 0px 0px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all elements with animation classes
+        document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Special handling for service cards and team cards with staggered animation
+        document.querySelectorAll('.service-card').forEach((el, index) => {
+            observer.observe(el);
+            // Add staggered delay for flip animation
+            el.style.transitionDelay = `${index * 0.05}s`;
+        });
+        
+        // Initial animation for hero elements
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.querySelectorAll('#home .fade-in').forEach(el => {
+                    el.classList.add('animate');
+                });
+            }, 500);
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9701d392b1574ed2',t:'MTc1NTM1NjY5MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
