@@ -14,72 +14,175 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-        html,body{overflow-x:hidden;font-family:'Inter',sans-serif;scroll-behavior:smooth}
-        /* HERO GRADIENT & SLIDER */
-        .hero-gradient{position:relative;overflow:hidden;min-height:100vh}
-        @media(min-width:1920px){.hero-gradient{min-height:1080px}}
-        @media(max-width:768px){.hero-gradient{min-height:100vh}}
-        .hero-slider{position:absolute;top:0;left:0;right:0;bottom:0;overflow:hidden}
-        .hero-slide{position:absolute;top:0;left:0;width:100%;height:100%;background-size:cover;background-position:center;background-repeat:no-repeat;opacity:0;transform:translateX(100%);transition:all 1.2s cubic-bezier(.4,0,.2,1)}
-        @media(max-width:768px){
-            .hero-slide:nth-child(1){background-image:url('images/hero1m.jpg')!important}
-            .hero-slide:nth-child(2){background-image:url('images/hero2m.jpg')!important}
-            .hero-slide:nth-child(3){background-image:url('images/hero3m.jpg')!important}
-            .hero-slide:nth-child(4){background-image:url('images/hero4m.jpg')!important}
-            .hero-slide:nth-child(5){background-image:url('images/hero5m.jpg')!important}
-            .hero-slide:nth-child(6){background-image:url('images/hero6m.jpg')!important}
-            .hero-slide:nth-child(7){background-image:url('images/hero7m.jpg')!important}
-            .hero-slide:nth-child(8){background-image:url('images/hero8m.jpg')!important}
-        }
-        .hero-slide.active{opacity:1;transform:translateX(0)}
-        .hero-slide.prev{transform:translateX(-100%)}
-        .hero-slide::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(135deg,rgba(30,58,138,.8) 0%,rgba(59,130,246,.6) 100%);z-index:1}
-        /* TEXT SLIDER */
-        .text-slider{height:80px;overflow:hidden;position:relative}
-        .text-slide{position:absolute;width:100%;opacity:0;transform:translateY(100%);transition:all .8s ease}
-        .text-slide.active{opacity:1;transform:translateY(0)}
-        /* SERVICE CARDS – ORIGINAL ANIMATION */
-        .service-card{
-            transition:all .4s ease;
-            opacity:0;
-            transform:perspective(1000px) rotateX(90deg) translateY(30px);
-            transform-origin:bottom;
-        }
-        .service-card.animate{
-            opacity:1;
-            transform:perspective(1000px) rotateX(0deg) translateY(0);
-        }
-        .service-card:hover{
-            transform:translateY(-5px);
-            box-shadow:0 20px 25px -5px rgba(0,0,0,.1);
-        }
-        /* TEAM CARDS – NEW LEFT-TO-RIGHT 3-D FLIP */
-        .team-card-wrapper{perspective:800px}
-        .team-card{
-            position:relative;
-            width:100%;
-            height:100%;
-            transform-style:preserve-3d;
-            transition:transform .6s ease;
-            opacity:0;
-            transform:rotateY(-90deg);
-        }
-        .team-card.animate{
-            opacity:1;
-            transform:rotateY(0deg);
-        }
-        /* GENERAL OBSERVER CLASSES */
-        .fade-in{opacity:0;transform:translateY(30px);transition:all .6s ease}
-        .fade-in.animate{opacity:1;transform:translateY(0)}
-        .slide-in-left{opacity:0;transform:translateX(-50px);transition:all .6s ease}
-        .slide-in-left.animate{opacity:1;transform:translateX(0)}
-        .slide-in-right{opacity:0;transform:translateX(50px);transition:all .6s ease}
-        .slide-in-right.animate{opacity:1;transform:translateX(0)}
 
-        .hero-slide {
-  background-size: 100% 100%;   /* fits exactly full HD */
-  background-position: center;
-  background-repeat: no-repeat;
+html, body {
+    overflow-x: hidden;
+    font-family: 'Inter', sans-serif;
+    scroll-behavior: smooth;
+}
+
+/* ================= HERO GRADIENT & SLIDER ================= */
+.hero-gradient {
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+}
+
+@media (min-width: 1920px) {
+    .hero-gradient {
+        min-height: 1080px;
+    }
+}
+
+.hero-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+}
+
+.hero-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;          /* fills the container */
+    background-position: center;     /* centers image */
+    background-repeat: no-repeat;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 1.2s cubic-bezier(.4,0,.2,1);
+}
+
+
+/* Desktop active/previous slide */
+.hero-slide.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.hero-slide.prev {
+    transform: translateX(-100%);
+}
+
+/* Gradient overlay */
+.hero-slide::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(30,58,138,.8) 0%, rgba(59,130,246,.6) 100%);
+    z-index: 1;
+}
+
+/* Mobile hero images */
+@media (max-width: 768px) {
+    .hero-gradient {
+        min-height: 100vh;
+    }
+    .hero-slide:nth-child(1) { background-image: url('images/hero1m.jpg') !important; }
+    .hero-slide:nth-child(2) { background-image: url('images/hero2m.jpg') !important; }
+    .hero-slide:nth-child(3) { background-image: url('images/hero3m.jpg') !important; }
+    .hero-slide:nth-child(4) { background-image: url('images/hero4m.jpg') !important; }
+    .hero-slide:nth-child(5) { background-image: url('images/hero5m.jpg') !important; }
+    .hero-slide:nth-child(6) { background-image: url('images/hero6m.jpg') !important; }
+    .hero-slide:nth-child(7) { background-image: url('images/hero7m.jpg') !important; }
+    .hero-slide:nth-child(8) { background-image: url('images/hero8m.jpg') !important; }
+}
+
+/* ================= TEXT SLIDER ================= */
+.text-slider {
+    height: 80px;
+    overflow: hidden;
+    position: relative;
+}
+
+.text-slide {
+    position: absolute;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: all .8s ease;
+}
+
+.text-slide.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ================= SERVICE CARDS ================= */
+.service-card {
+    transition: all .4s ease;
+    opacity: 0;
+    transform: perspective(1000px) rotateX(90deg) translateY(30px);
+    transform-origin: bottom;
+}
+
+.service-card.animate {
+    opacity: 1;
+    transform: perspective(1000px) rotateX(0deg) translateY(0);
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0,0,0,.1);
+}
+
+/* ================= TEAM CARDS ================= */
+.team-card-wrapper { perspective: 800px; }
+
+.team-card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform .6s ease;
+    opacity: 0;
+    transform: rotateY(-90deg);
+}
+
+.team-card.animate {
+    opacity: 1;
+    transform: rotateY(0deg);
+}
+
+/* ================= GENERAL OBSERVER CLASSES ================= */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all .6s ease;
+}
+
+.fade-in.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.slide-in-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all .6s ease;
+}
+
+.slide-in-left.animate {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.slide-in-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all .6s ease;
+}
+
+.slide-in-right.animate {
+    opacity: 1;
+    transform: translateX(0);
 }
 
     </style>
