@@ -75,13 +75,22 @@
         .slide-in-left.animate{opacity:1;transform:translateX(0)}
         .slide-in-right{opacity:0;transform:translateX(50px);transition:all .6s ease}
         .slide-in-right.animate{opacity:1;transform:translateX(0)}
+
+        .hero-slide {
+  background-size: 100% 100%;   /* fits exactly full HD */
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
     </style>
 </head>
 <body class="bg-gray-50">
-<!-- ==========  NAVIGATION  ========== -->
+<!-- ========== NAVIGATION ========== -->
 <nav class="bg-white shadow-lg fixed w-full top-0 z-50">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div class="px-4 sm:px-6 lg:px-8"> <!-- removed max-w-7xl mx-auto -->
     <div class="flex justify-between items-center h-16">
+      
+      <!-- Logo + Firm Name -->
       <div class="flex items-center">
         <div class="flex-shrink-0 flex items-center">
           <img src="images/logo.png" alt="GA Maluleke Attorneys Logo" class="w-10 h-10 object-contain">
@@ -91,6 +100,8 @@
           </div>
         </div>
       </div>
+      
+      <!-- Desktop Menu -->
       <div class="hidden md:block">
         <div class="ml-10 flex items-baseline space-x-4">
           <a href="#home" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Home</a>
@@ -99,163 +110,152 @@
           <a href="#contact" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Contact</a>
         </div>
       </div>
+      
+      <!-- Mobile Menu Button -->
       <div class="md:hidden">
         <button id="mobile-menu-btn" class="text-gray-700 hover:text-blue-600 p-2">
-          <svg class="h-6 w-6" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          <svg class="h-6 w-6" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
         </button>
       </div>
     </div>
   </div>
+  
   <!-- Mobile Sidebar Overlay -->
-        <div id="mobile-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden md:hidden transition-opacity duration-300"></div>
-        
-        <!-- Mobile Sidebar -->
-        <div id="mobile-sidebar" class="fixed top-0 left-0 h-full w-4/5 max-w-xs bg-white shadow-2xl z-50 transform -translate-x-full transition-transform duration-300 ease-in-out md:hidden">
-            <div class="flex items-center justify-between p-6 border-b border-gray-200">
-                <div class="flex items-center">
-                    <div class="logo-animation mr-3">
-                        <svg class="w-8 h-8 text-blue-900 scales-icon" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 2L13.09 8.26L22 9L13.09 9.74L12 16L10.91 9.74L2 9L10.91 8.26L12 2M12 6.5L11.5 8.5L9.5 9L11.5 9.5L12 11.5L12.5 9.5L14.5 9L12.5 8.5L12 6.5M7 19H17V21H7V19M8 17H16C16.55 17 17 16.55 17 16V15H7V16C7 16.55 7.45 17 8 17Z"/>
-                        </svg>
-                    </div>
-                    <div>
-                        <h2 class="text-lg font-bold text-blue-900">GA Maluleke</h2>
-                        <p class="text-xs text-blue-700 font-medium">Vayimeri</p>
-                    </div>
-                </div>
-                <button id="close-sidebar" class="text-gray-500 hover:text-gray-700 focus:outline-none">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                    </svg>
-                </button>
-            </div>
-            
-            <nav class="p-6">
-                <ul class="space-y-4">
-                    <li>
-                        <a href="#home" class="flex items-center px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors duration-200 sidebar-link">
-                            <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
-                            </svg>
-                            Home
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#services" class="flex items-center px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors duration-200 sidebar-link">
-                            <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
-                            </svg>
-                            Services
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#about" class="flex items-center px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors duration-200 sidebar-link">
-                            <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
-                            About
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#contact" class="flex items-center px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors duration-200 sidebar-link">
-                            <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                            </svg>
-                            Contact
-                        </a>
-                    </li>
-                </ul>
-                
-                <div class="mt-8 pt-8 border-t border-gray-200">
-                    <div class="text-sm text-gray-600 mb-4">
-                        <p class="font-semibold text-gray-900 mb-2">Contact Info</p>
-                        <p>📍 Stand No 171, Section D1, Giyani</p>
-                        <p>📞 015 812 0661</p>
-                        <p>📱 083 349 0066</p>
-                        <p>✉️ gamaluleke@gmail.com</p>
+  <div id="mobile-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden md:hidden transition-opacity duration-300"></div>
+  
+  <!-- Mobile Sidebar -->
+  <div id="mobile-sidebar" class="fixed top-0 left-0 h-full w-4/5 max-w-xs bg-white shadow-2xl z-50 transform -translate-x-full transition-transform duration-300 ease-in-out md:hidden">
+    <div class="flex items-center justify-between p-6 border-b border-gray-200">
+      <div class="flex items-center">
+        <div class="logo-animation mr-3">
+  <img src="images/logo.png" alt="GA Maluleke Attorneys Logo" class="w-8 h-8 object-contain">
+</div>
+
+        <div>
+          <h2 class="text-lg font-bold text-blue-900">GA Maluleke</h2>
+          <p class="text-xs text-blue-700 font-medium">Vayimeri</p>
+        </div>
+      </div>
+      <button id="close-sidebar" class="text-gray-500 hover:text-gray-700 focus:outline-none">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+    
+    <nav class="p-6">
+      <ul class="space-y-4">
+        <li>
+          <a href="#home" class="flex items-center px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors duration-200 sidebar-link">
+            <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+            </svg>
+            Home
+          </a>
+        </li>
+        <li>
+          <a href="#services" class="flex items-center px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors duration-200 sidebar-link">
+            <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+            </svg>
+            Services
+          </a>
+        </li>
+        <li>
+          <a href="#about" class="flex items-center px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors duration-200 sidebar-link">
+            <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            About
+          </a>
+        </li>
+        <li>
+          <a href="#contact" class="flex items-center px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors duration-200 sidebar-link">
+            <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+            </svg>
+            Contact
+          </a>
+        </li>
+      </ul>
+      
+      <div class="mt-8 pt-8 border-t border-gray-200">
+        <div class="text-sm text-gray-600 mb-4">
+          <p class="font-semibold text-gray-900 mb-2">Contact Info</p>
+          <p>📍 Stand No 171, Section D1, Giyani</p>
+          <p>📞 015 812 0661</p>
+          <p>📱 083 349 0066</p>
+          <p>✉️ gamaluleke@gmail.com</p>
+        </div>
       </div>
     </nav>
   </div>
 </nav>
 
 
+
 <!-- Hero Section -->
-    <section id="home" class="hero-gradient text-white pt-16 relative flex items-center">
-        <!-- Image Slider Background -->
-        <div class="hero-slider">
-            <div class="hero-slide active" style="background-image: url('images/hero1.jpg')"></div>
-            <div class="hero-slide" style="background-image: url('images/hero2.jpg')"></div>
-            <div class="hero-slide" style="background-image: url('images/hero3.jpg')"></div>
-            <div class="hero-slide" style="background-image: url('images/hero4.jpg')"></div>
-            <div class="hero-slide" style="background-image: url('images/hero5.jpg')"></div>
-            <div class="hero-slide" style="background-image: url('images/hero6.jpg')"></div>
-            <div class="hero-slide" style="background-image: url('images/hero7.jpg')"></div>
-            <div class="hero-slide" style="background-image: url('images/hero8.jpg')"></div>
-        </div>
-        
-        <div class="hero-background">
-            <!-- Floating Legal Icons -->
-            <div class="legal-icon">
-                <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2L13.09 8.26L22 9L13.09 9.74L12 16L10.91 9.74L2 9L10.91 8.26L12 2M12 6.5L11.5 8.5L9.5 9L11.5 9.5L12 11.5L12.5 9.5L14.5 9L12.5 8.5L12 6.5M7 19H17V21H7V19M8 17H16C16.55 17 17 16.55 17 16V15H7V16C7 16.55 7.45 17 8 17Z"/>
-                </svg>
+<section id="home" class="hero-gradient text-white pt-16 relative flex items-center">
+    <!-- Image Slider Background -->
+    <div class="hero-slider">
+        <div class="hero-slide active" style="background-image: url('images/hero1.jpg')"></div>
+        <div class="hero-slide" style="background-image: url('images/hero2.jpg')"></div>
+        <div class="hero-slide" style="background-image: url('images/hero3.jpg')"></div>
+        <div class="hero-slide" style="background-image: url('images/hero4.jpg')"></div>
+        <div class="hero-slide" style="background-image: url('images/hero5.jpg')"></div>
+        <div class="hero-slide" style="background-image: url('images/hero6.jpg')"></div>
+        <div class="hero-slide" style="background-image: url('images/hero7.jpg')"></div>
+        <div class="hero-slide" style="background-image: url('images/hero8.jpg')"></div>
+    </div>
+
+    <!-- Floating Icons -->
+    <div class="hero-background">
+        <!-- your legal-icon svgs ... -->
+    </div>
+
+    <!-- Hero Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10 w-full flex justify-center">
+        <div class="text-center">
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 fade-in drop-shadow-lg">
+                GA Maluleke Attorneys
+            </h1>
+
+            <div class="text-slider mb-8">
+                <p class="text-xl md:text-2xl lg:text-3xl text-white text-slide active drop-shadow-md">
+                    Professional Legal Services in Giyani, South Africa
+                </p>
+                <p class="text-xl md:text-2xl lg:text-3xl text-white text-slide drop-shadow-md">
+                    Your Rights, Our Priority - Expert Legal Representation
+                </p>
+                <p class="text-xl md:text-2xl lg:text-3xl text-white text-slide drop-shadow-md">
+                    Justice Through Knowledge, Integrity, and Dedication
+                </p>
+                <p class="text-xl md:text-2xl lg:text-3xl text-white text-slide drop-shadow-md">
+                    Protecting Your Interests with Professional Excellence
+                </p>
+                <p class="text-xl md:text-2xl lg:text-3xl text-white text-slide drop-shadow-md">
+                    Trusted Legal Counsel for Every Legal Challenge
+                </p>
             </div>
-            <div class="legal-icon">
-                <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                </svg>
-            </div>
-            <div class="legal-icon">
-                <svg class="w-11 h-11" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
-                </svg>
-            </div>
-            <div class="legal-icon">
-                <svg class="w-9 h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
-                </svg>
-            </div>
-            <div class="legal-icon">
-                <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                </svg>
-            </div>
-            <div class="legal-icon">
-                <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0H8m8 0v2a2 2 0 01-2 2H10a2 2 0 01-2-2V6m8 0H8"></path>
-                </svg>
-            </div>
-            <div class="legal-icon">
-                <svg class="w-11 h-11" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                </svg>
-            </div>
-            <div class="legal-icon">
-                <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
-            </div>
-        </div>
-        
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10 w-full">
-            <div class="text-center">
-                <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 fade-in drop-shadow-lg">GA Maluleke Attorneys</h1>
-                <div class="text-slider mb-8">
-                    <p class="text-xl md:text-2xl lg:text-3xl text-white text-slide active drop-shadow-md">Professional Legal Services in Giyani, South Africa</p>
-                    <p class="text-xl md:text-2xl lg:text-3xl text-white text-slide drop-shadow-md">Your Rights, Our Priority - Expert Legal Representation</p>
-                    <p class="text-xl md:text-2xl lg:text-3xl text-white text-slide drop-shadow-md">Justice Through Knowledge, Integrity, and Dedication</p>
-                    <p class="text-xl md:text-2xl lg:text-3xl text-white text-slide drop-shadow-md">Protecting Your Interests with Professional Excellence</p>
-                    <p class="text-xl md:text-2xl lg:text-3xl text-white text-slide drop-shadow-md">Trusted Legal Counsel for Every Legal Challenge</p>
-                </div>
-                <p class="text-lg md:text-xl lg:text-2xl mb-10 max-w-4xl mx-auto text-white fade-in drop-shadow-md">Providing expert legal representation and guidance across multiple practice areas including personal injury, estate administration, family law, and more.</p>
-                <div class="space-y-4 sm:space-y-0 sm:space-x-4 sm:flex sm:justify-center fade-in">
-                    <a href="#services" class="inline-block bg-white text-blue-900 px-8 py-4 rounded-lg font-semibold hover:bg-blue-50 transition-all transform hover:scale-105 text-lg shadow-lg">Our Services</a>
-                    <a href="#contact" class="inline-block border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-blue-900 transition-all transform hover:scale-105 text-lg shadow-lg">Contact Us</a>
-                </div>
+
+            <p class="text-lg md:text-xl lg:text-2xl mb-10 max-w-4xl mx-auto text-white fade-in drop-shadow-md">
+                Providing expert legal representation and guidance across multiple practice areas including personal injury, estate administration, family law, and more.
+            </p>
+
+            <div class="space-y-4 sm:space-y-0 sm:space-x-4 sm:flex sm:justify-center fade-in">
+                <a href="#services" class="inline-block bg-white text-blue-900 px-8 py-4 rounded-lg font-semibold hover:bg-blue-50 transition-all transform hover:scale-105 text-lg shadow-lg">
+                    Our Services
+                </a>
+                <a href="#contact" class="inline-block border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-blue-900 transition-all transform hover:scale-105 text-lg shadow-lg">
+                    Contact Us
+                </a>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
 
 <!-- Services Section -->
 <section id="services" class="py-20 bg-gradient-to-br from-slate-50 to-blue-50">
