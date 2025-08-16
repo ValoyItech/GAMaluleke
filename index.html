@@ -1,278 +1,112 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="overflow-x: hidden">
 <head>
-    <!-- Basic Meta -->
-<title>GA Maluleke Attorneys - Legal Services in Giyani</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="GA Maluleke Attorneys – Professional legal services in Giyani, South Africa. We specialize in personal injury, estate administration, family law, RAF claims, and more.">
-
-<!-- Favicon / Address Bar Icon -->
-<link rel="icon" href="images/logo.png" type="image/png">
-
-<!-- Open Graph / Facebook / WhatsApp -->
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://www.gamalulekeattorneys.co.za/">
-<meta property="og:title" content="GA Maluleke Attorneys - Legal Services in Giyani">
-<meta property="og:description" content="Professional legal services including personal injury, estate administration, family law, criminal defense, and more.">
-<meta property="og:image" content="https://www.gamalulekeattorneys.co.za/images/logo.png">
-
-<!-- Twitter / X Card -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:url" content="https://www.gamalulekeattorneys.co.za/">
-<meta name="twitter:title" content="GA Maluleke Attorneys - Legal Services in Giyani">
-<meta name="twitter:description" content="Trusted legal representation in Giyani – RAF claims, family law, criminal defense, land claims, and more.">
-<meta name="twitter:image" content="https://www.gamalulekeattorneys.co.za/images/logo.png">
-
-<!-- Theme Color (Mobile Browsers) -->
-<meta name="theme-color" content="#1e3a8a">
-
+    <meta charset="UTF-8">
+    <title>GA Maluleke Attorneys – Legal Services in Giyani</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="icon" href="images/logo.png" type="image/png">
+    <meta name="description" content="GA Maluleke Attorneys – Professional legal services in Giyani, South Africa.">
+    <meta property="og:title" content="GA Maluleke Attorneys - Legal Services in Giyani">
+    <meta property="og:url" content="https://www.gamalulekeattorneys.co.za/">
+    <meta property="og:image" content="https://www.gamalulekeattorneys.co.za/images/logo.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="theme-color" content="#1e3a8a">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-        body { font-family: 'Inter', sans-serif; }
-        
-        .hero-gradient { 
-            position: relative;
-            overflow: hidden;
-            min-height: 100vh;
+        html,body{overflow-x:hidden;font-family:'Inter',sans-serif;scroll-behavior:smooth}
+        /* HERO GRADIENT & SLIDER */
+        .hero-gradient{position:relative;overflow:hidden;min-height:100vh}
+        @media(min-width:1920px){.hero-gradient{min-height:1080px}}
+        @media(max-width:768px){.hero-gradient{min-height:100vh}}
+        .hero-slider{position:absolute;top:0;left:0;right:0;bottom:0;overflow:hidden}
+        .hero-slide{position:absolute;top:0;left:0;width:100%;height:100%;background-size:cover;background-position:center;background-repeat:no-repeat;opacity:0;transform:translateX(100%);transition:all 1.2s cubic-bezier(.4,0,.2,1)}
+        @media(max-width:768px){
+            .hero-slide:nth-child(1){background-image:url('images/hero1m.jpg')!important}
+            .hero-slide:nth-child(2){background-image:url('images/hero2m.jpg')!important}
+            .hero-slide:nth-child(3){background-image:url('images/hero3m.jpg')!important}
+            .hero-slide:nth-child(4){background-image:url('images/hero4m.jpg')!important}
+            .hero-slide:nth-child(5){background-image:url('images/hero5m.jpg')!important}
+            .hero-slide:nth-child(6){background-image:url('images/hero6m.jpg')!important}
+            .hero-slide:nth-child(7){background-image:url('images/hero7m.jpg')!important}
+            .hero-slide:nth-child(8){background-image:url('images/hero8m.jpg')!important}
         }
-        
-        /* Full HD Desktop optimization */
-        @media (min-width: 1920px) {
-            .hero-gradient {
-                min-height: 1080px;
-            }
+        .hero-slide.active{opacity:1;transform:translateX(0)}
+        .hero-slide.prev{transform:translateX(-100%)}
+        .hero-slide::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(135deg,rgba(30,58,138,.8) 0%,rgba(59,130,246,.6) 100%);z-index:1}
+        /* TEXT SLIDER */
+        .text-slider{height:80px;overflow:hidden;position:relative}
+        .text-slide{position:absolute;width:100%;opacity:0;transform:translateY(100%);transition:all .8s ease}
+        .text-slide.active{opacity:1;transform:translateY(0)}
+        /* SERVICE CARDS – ORIGINAL ANIMATION */
+        .service-card{
+            transition:all .4s ease;
+            opacity:0;
+            transform:perspective(1000px) rotateX(90deg) translateY(30px);
+            transform-origin:bottom;
         }
-        
-        /* Mobile portrait optimization */
-        @media (max-width: 768px) {
-            .hero-gradient {
-                min-height: 100vh;
-            }
+        .service-card.animate{
+            opacity:1;
+            transform:perspective(1000px) rotateX(0deg) translateY(0);
         }
-        
-        .hero-slider {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            overflow: hidden;
+        .service-card:hover{
+            transform:translateY(-5px);
+            box-shadow:0 20px 25px -5px rgba(0,0,0,.1);
         }
-        
-        .hero-slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            opacity: 0;
-            transform: translateX(100%);
-            transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+        /* TEAM CARDS – NEW LEFT-TO-RIGHT 3-D FLIP */
+        .team-card-wrapper{perspective:800px}
+        .team-card{
+            position:relative;
+            width:100%;
+            height:100%;
+            transform-style:preserve-3d;
+            transition:transform .6s ease;
+            opacity:0;
+            transform:rotateY(-90deg);
         }
-        
-        /* Mobile responsive images */
-        @media (max-width: 768px) {
-            .hero-slide:nth-child(1) { background-image: url('images/hero1m.jpg') !important; }
-            .hero-slide:nth-child(2) { background-image: url('images/hero2m.jpg') !important; }
-            .hero-slide:nth-child(3) { background-image: url('images/hero3m.jpg') !important; }
-            .hero-slide:nth-child(4) { background-image: url('images/hero4m.jpg') !important; }
-            .hero-slide:nth-child(5) { background-image: url('images/hero5m.jpg') !important; }
-            .hero-slide:nth-child(6) { background-image: url('images/hero6m.jpg') !important; }
-            .hero-slide:nth-child(7) { background-image: url('images/hero7m.jpg') !important; }
-            .hero-slide:nth-child(8) { background-image: url('images/hero8m.jpg') !important; }
+        .team-card.animate{
+            opacity:1;
+            transform:rotateY(0deg);
         }
-        
-        .hero-slide.active {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        
-        .hero-slide.prev {
-            transform: translateX(-100%);
-        }
-        
-        .hero-slide::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(30, 58, 138, 0.8) 0%, rgba(59, 130, 246, 0.6) 100%);
-            z-index: 1;
-        }
-        
-        .hero-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            opacity: 0.15;
-            overflow: hidden;
-            z-index: 2;
-        }
-        
-        .legal-icon {
-            position: absolute;
-            color: white;
-            opacity: 0.9;
-            animation: floatIcon 12s ease-in-out infinite;
-            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
-        }
-        
-        .legal-icon:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
-        .legal-icon:nth-child(2) { top: 20%; right: 15%; animation-delay: -1.5s; }
-        .legal-icon:nth-child(3) { top: 40%; left: 5%; animation-delay: -3s; }
-        .legal-icon:nth-child(4) { top: 60%; right: 10%; animation-delay: -4.5s; }
-        .legal-icon:nth-child(5) { top: 80%; left: 20%; animation-delay: -6s; }
-        .legal-icon:nth-child(6) { top: 30%; left: 50%; animation-delay: -7.5s; }
-        .legal-icon:nth-child(7) { top: 70%; right: 30%; animation-delay: -9s; }
-        .legal-icon:nth-child(8) { top: 15%; left: 70%; animation-delay: -10.5s; }
-        
-        @keyframes floatIcon {
-            0% { transform: translateY(0px) rotate(0deg); opacity: 0.6; }
-            25% { transform: translateY(-25px) rotate(90deg); opacity: 0.9; }
-            50% { transform: translateY(-15px) rotate(180deg); opacity: 0.7; }
-            75% { transform: translateY(-35px) rotate(270deg); opacity: 0.8; }
-            100% { transform: translateY(0px) rotate(360deg); opacity: 0.6; }
-        }
-        
-        .service-card { 
-            transition: all 0.4s ease; 
-            opacity: 0;
-            transform: perspective(1000px) rotateX(90deg) translateY(30px);
-            transform-origin: bottom;
-        }
-        
-        .service-card.animate { 
-            opacity: 1;
-            transform: perspective(1000px) rotateX(0deg) translateY(0);
-        }
-        
-        .service-card:hover { 
-            transform: translateY(-5px); 
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); 
-        }
-        
-        .scroll-smooth { scroll-behavior: smooth; }
-        
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
-        }
-        
-        .fade-in.animate {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .slide-in-left {
-            opacity: 0;
-            transform: translateX(-50px);
-            transition: all 0.6s ease;
-        }
-        
-        .slide-in-left.animate {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        
-        .slide-in-right {
-            opacity: 0;
-            transform: translateX(50px);
-            transition: all 0.6s ease;
-        }
-        
-        .slide-in-right.animate {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        
-        .text-slider {
-            height: 80px;
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .text-slide {
-            position: absolute;
-            width: 100%;
-            opacity: 0;
-            transform: translateY(100%);
-            transition: all 0.8s ease;
-        }
-        
-        .text-slide.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .logo-animation {
-            animation: logoFloat 3s ease-in-out infinite;
-        }
-        
-        @keyframes logoFloat {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-5px); }
-        }
-        
-        .scales-icon {
-            animation: scalesBalance 4s ease-in-out infinite;
-        }
-        
-        @keyframes scalesBalance {
-            0%, 100% { transform: rotate(-2deg); }
-            50% { transform: rotate(2deg); }
-        }
-
-        body {
-  overflow-x: hidden;
-}
-
+        /* GENERAL OBSERVER CLASSES */
+        .fade-in{opacity:0;transform:translateY(30px);transition:all .6s ease}
+        .fade-in.animate{opacity:1;transform:translateY(0)}
+        .slide-in-left{opacity:0;transform:translateX(-50px);transition:all .6s ease}
+        .slide-in-left.animate{opacity:1;transform:translateX(0)}
+        .slide-in-right{opacity:0;transform:translateX(50px);transition:all .6s ease}
+        .slide-in-right.animate{opacity:1;transform:translateX(0)}
     </style>
 </head>
-<body class="bg-gray-50 scroll-smooth">
-    <!-- Navigation -->
-    <nav class="bg-white shadow-lg fixed w-full top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <div class="flex items-center">
-<div class="flex-shrink-0 flex items-center">
-    <div class="logo-animation mr-3">
-        <img src="images/logo.png" alt="GA Maluleke Attorneys Logo" class="w-10 h-10 object-contain">
-    </div>
-    <div>
-        <h1 class="text-xl font-bold text-blue-900">GA Maluleke Attorneys</h1>
-        <p class="text-xs text-blue-700 font-medium">Vayimeri</p>
-    </div>
-</div>
-                    
-                </div>
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-4">
-                        <a href="#home" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Home</a>
-                        <a href="#services" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Services</a>
-                        <a href="#about" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">About</a>
-                        <a href="#contact" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Contact</a>
-                    </div>
-                </div>
-                <div class="md:hidden">
-                    <button id="mobile-menu-btn" class="text-gray-700 hover:text-blue-600 focus:outline-none p-2">
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
-                    </button>
-                </div>
-            </div>
+<body class="bg-gray-50">
+<!-- ==========  NAVIGATION  ========== -->
+<nav class="bg-white shadow-lg fixed w-full top-0 z-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      <div class="flex items-center">
+        <div class="flex-shrink-0 flex items-center">
+          <img src="images/logo.png" alt="GA Maluleke Attorneys Logo" class="w-10 h-10 object-contain">
+          <div class="ml-3">
+            <h1 class="text-xl font-bold text-blue-900">GA Maluleke Attorneys</h1>
+            <p class="text-xs text-blue-700 font-medium">Vayimeri</p>
+          </div>
         </div>
-        <!-- Mobile Sidebar Overlay -->
+      </div>
+      <div class="hidden md:block">
+        <div class="ml-10 flex items-baseline space-x-4">
+          <a href="#home" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Home</a>
+          <a href="#services" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Services</a>
+          <a href="#about" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">About</a>
+          <a href="#contact" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+        </div>
+      </div>
+      <div class="md:hidden">
+        <button id="mobile-menu-btn" class="text-gray-700 hover:text-blue-600 p-2">
+          <svg class="h-6 w-6" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- Mobile Sidebar Overlay -->
         <div id="mobile-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden md:hidden transition-opacity duration-300"></div>
         
         <!-- Mobile Sidebar -->
@@ -339,13 +173,13 @@
                         <p>📞 015 812 0661</p>
                         <p>📱 083 349 0066</p>
                         <p>✉️ gamaluleke@gmail.com</p>
-                    </div>
-                </div>
-            </nav>
-        </div>
+      </div>
     </nav>
+  </div>
+</nav>
 
-    <!-- Hero Section -->
+
+<!-- Hero Section -->
     <section id="home" class="hero-gradient text-white pt-16 relative flex items-center">
         <!-- Image Slider Background -->
         <div class="hero-slider">
@@ -953,184 +787,66 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div>
-                    <div class="flex items-center mb-4">
-    <div class="logo-animation mr-3">
-        <img src="images/white.png" alt="GA Maluleke Attorneys Logo" class="w-10 h-10 scales-icon">
-    </div>
-    <div>
-        <h3 class="text-xl font-bold">GA Maluleke Attorneys</h3>
-        <p class="text-sm text-gray-300 font-medium">Vayimeri</p>
-    </div>
-</div>
-
-                    <p class="text-gray-300 mb-4">Professional legal services in Giyani, South Africa. We are committed to protecting your rights and achieving the best outcomes for our clients.</p>
-                </div>
-                
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#home" class="text-gray-300 hover:text-white transition-colors">Home</a></li>
-                        <li><a href="#services" class="text-gray-300 hover:text-white transition-colors">Services</a></li>
-                        <li><a href="#about" class="text-gray-300 hover:text-white transition-colors">About</a></li>
-                        <li><a href="#contact" class="text-gray-300 hover:text-white transition-colors">Contact</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">Contact Info</h4>
-                    <div class="space-y-2 text-gray-300">
-                        <p>Stand No 171, Section D1, Giyani</p>
-                        <p>Phone: 015 812 0661</p>
-                        <p>Mobile: 083 349 0066</p>
-                        <p>Email: gamaluleke@gmail.com</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
-                <p class="text-gray-400">&copy; 2024 GA Maluleke Attorneys. All rights reserved.</p>
-            </div>
+<!-- ==========  FOOTER  ========== -->
+<footer class="bg-gray-900 text-white py-12">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div>
+        <div class="flex items-center mb-4">
+          <img src="images/white.png" alt="Logo" class="w-10 h-10 object-contain">
+          <div class="ml-3">
+            <h3 class="text-xl font-bold">GA Maluleke Attorneys</h3>
+            <p class="text-sm text-gray-300 font-medium">Vayimeri</p>
+          </div>
         </div>
-    </footer>
+        <p class="text-gray-300 mb-4">Professional legal services in Giyani, South Africa. We are committed to protecting your rights and achieving the best outcomes for our clients.</p>
+      </div>
+      <div>
+        <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+        <ul class="space-y-2">
+          <li><a href="#home" class="text-gray-300 hover:text-white">Home</a></li>
+          <li><a href="#services" class="text-gray-300 hover:text-white">Services</a></li>
+          <li><a href="#about" class="text-gray-300 hover:text-white">About</a></li>
+          <li><a href="#contact" class="text-gray-300 hover:text-white">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-lg font-semibold mb-4">Contact Info</h4>
+        <div class="space-y-2 text-gray-300">
+          <p>Stand No 171, Section D1, Giyani</p>
+          <p>Phone: 015 812 0661</p>
+          <p>Mobile: 083 349 0066</p>
+          <p>Email: gamaluleke@gmail.com</p>
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+      <p class="text-gray-400">&copy; 2024 GA Maluleke Attorneys. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
 
-    <script>
-        // Mobile sidebar toggle
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileSidebar = document.getElementById('mobile-sidebar');
-        const mobileOverlay = document.getElementById('mobile-overlay');
-        const closeSidebar = document.getElementById('close-sidebar');
-        
-        function openSidebar() {
-            mobileOverlay.classList.remove('hidden');
-            mobileSidebar.classList.remove('-translate-x-full');
-            document.body.style.overflow = 'hidden';
-        }
-        
-        function closeSidebarMenu() {
-            mobileOverlay.classList.add('hidden');
-            mobileSidebar.classList.add('-translate-x-full');
-            document.body.style.overflow = '';
-        }
-        
-        mobileMenuBtn.addEventListener('click', openSidebar);
-        closeSidebar.addEventListener('click', closeSidebarMenu);
-        mobileOverlay.addEventListener('click', closeSidebarMenu);
-        
-        // Close sidebar when clicking on navigation links
-        document.querySelectorAll('.sidebar-link').forEach(link => {
-            link.addEventListener('click', closeSidebarMenu);
-        });
-        
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                    // Close mobile sidebar if open
-                    closeSidebarMenu();
-                }
-            });
-        });
-        
-        // Form submission handler
-        document.querySelector('form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for your message! This is a demo form. In a real website, your message would be sent to GA Maluleke Attorneys.');
-        });
-        
-        // Add scroll effect to navbar
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 100) {
-                nav.classList.add('shadow-lg');
-            } else {
-                nav.classList.remove('shadow-lg');
-            }
-        });
-        
-        // Text slider for hero section
-        const textSlides = document.querySelectorAll('.text-slide');
-        let currentSlide = 0;
-        
-        function nextSlide() {
-            textSlides[currentSlide].classList.remove('active');
-            currentSlide = (currentSlide + 1) % textSlides.length;
-            textSlides[currentSlide].classList.add('active');
-        }
-        
-        // Change slide every 3 seconds
-        setInterval(nextSlide, 3000);
-        
-        // Hero image slider
-        const heroSlides = document.querySelectorAll('.hero-slide');
-        let currentHeroSlide = 0;
-        
-        function nextHeroSlide() {
-            // Remove active class from current slide
-            heroSlides[currentHeroSlide].classList.remove('active');
-            heroSlides[currentHeroSlide].classList.add('prev');
-            
-            // Move to next slide
-            currentHeroSlide = (currentHeroSlide + 1) % heroSlides.length;
-            
-            // Reset all slides
-            heroSlides.forEach((slide, index) => {
-                slide.classList.remove('active', 'prev');
-                if (index === currentHeroSlide) {
-                    slide.classList.add('active');
-                } else if (index < currentHeroSlide) {
-                    slide.classList.add('prev');
-                }
-            });
-        }
-        
-        // Change hero image every 5 seconds
-        setInterval(nextHeroSlide, 5000);
-        
-        // Scroll animations
-        const observerOptions = {
-            threshold: 0.05,
-            rootMargin: '0px 0px 0px 0px'
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate');
-                }
-            });
-        }, observerOptions);
-        
-        // Observe all elements with animation classes
-        document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right').forEach(el => {
-            observer.observe(el);
-        });
-        
-        // Special handling for service cards and team cards with staggered animation
-        document.querySelectorAll('.service-card').forEach((el, index) => {
-            observer.observe(el);
-            // Add staggered delay for flip animation
-            el.style.transitionDelay = `${index * 0.05}s`;
-        });
-        
-        // Initial animation for hero elements
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                document.querySelectorAll('#home .fade-in').forEach(el => {
-                    el.classList.add('animate');
-                });
-            }, 500);
-        });
-    </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9701d392b1574ed2',t:'MTc1NTM1NjY5MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<!-- ==========  JAVASCRIPT (unchanged)  ========== -->
+<script>
+/* Sidebar */
+const mobileMenuBtn=document.getElementById('mobile-menu-btn'),mobileSidebar=document.getElementById('mobile-sidebar'),mobileOverlay=document.getElementById('mobile-overlay'),closeSidebar=document.getElementById('close-sidebar');
+function openSidebar(){mobileOverlay.classList.remove('hidden');mobileSidebar.classList.remove('-translate-x-full');document.body.style.overflow='hidden';}
+function closeSidebarMenu(){mobileOverlay.classList.add('hidden');mobileSidebar.classList.add('-translate-x-full');document.body.style.overflow='';}
+mobileMenuBtn.addEventListener('click',openSidebar);closeSidebar.addEventListener('click',closeSidebarMenu);mobileOverlay.addEventListener('click',closeSidebarMenu);
+document.querySelectorAll('.sidebar-link').forEach(l=>l.addEventListener('click',closeSidebarMenu));
+/* Smooth scroll */
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));t&&t.scrollIntoView({behavior:'smooth',block:'start'});closeSidebarMenu();}));
+/* Text slider */
+const textSlides=document.querySelectorAll('.text-slide');let curText=0;function nextSlide(){textSlides[curText].classList.remove('active');curText=(curText+1)%textSlides.length;textSlides[curText].classList.add('active');}setInterval(nextSlide,3000);
+/* Hero slider */
+const heroSlides=document.querySelectorAll('.hero-slide');let curHero=0;function nextHeroSlide(){heroSlides[curHero].classList.remove('active');heroSlides[curHero].classList.add('prev');curHero=(curHero+1)%heroSlides.length;heroSlides.forEach((s,i)=>{s.classList.remove('active','prev');if(i===curHero)s.classList.add('active');else if(i<curHero)s.classList.add('prev');});}setInterval(nextHeroSlide,5000);
+/* Intersection observer */
+const obs=new IntersectionObserver(entries=>entries.forEach(e=>e.isIntersecting&&e.target.classList.add('animate')),{threshold:.05});
+document.querySelectorAll('.fade-in,.slide-in-left,.slide-in-right,.service-card,.team-card').forEach(el=>obs.observe(el));
+/* Initial load */
+window.addEventListener('load',()=>{setTimeout(()=>document.querySelectorAll('#home .fade-in').forEach(el=>el.classList.add('animate')),500);});
+/* Dummy form */
+document.querySelector('form').addEventListener('submit',e=>{e.preventDefault();alert('Thank you for your message! This is a demo form.');});
+</script>
+</body>
 </html>
